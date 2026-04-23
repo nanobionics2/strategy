@@ -1,0 +1,943 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexialBusiness — Decisão, Dinheiro, Carreira e Vida Real</title>
+  <meta name="description" content="NexialStrategy.com — formação interdisciplinar voltada à tomada de decisão no mundo real, leitura de oportunidades, assimetria de informação, dinheiro, carreira, saúde, relacionamentos e desenvolvimento intelectual." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #04101d;
+      --bg-2: #07182a;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.09);
+      --line: rgba(255,255,255,0.12);
+      --text: #f3f7ff;
+      --muted: #b7c6da;
+      --cyan: #4ad8ff;
+      --green: #66efc2;
+      --gold: #f0c15a;
+      --shadow: 0 20px 60px rgba(0,0,0,0.32);
+      --radius: 24px;
+      --max: 1260px;
+    }* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(74,216,255,0.14), transparent 20%),
+    radial-gradient(circle at 85% 0%, rgba(240,193,90,0.08), transparent 18%),
+    radial-gradient(circle at 50% 50%, rgba(102,239,194,0.05), transparent 28%),
+    linear-gradient(180deg, #04101d 0%, #061524 36%, #08192b 100%);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+  opacity: .55;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(calc(100% - 32px), var(--max));
+  margin: 0 auto;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+  background: rgba(4,16,29,0.76);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand strong {
+  font-size: 1.2rem;
+  letter-spacing: .06em;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: .96rem;
+}
+
+.btn, .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after, .btn-outline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: transform .6s ease;
+}
+
+.btn:hover::after, .btn-outline:hover::after { transform: translateX(120%); }
+.btn:hover, .btn-outline:hover { transform: translateY(-2px); }
+
+.btn {
+  background: linear-gradient(135deg, var(--cyan), var(--green));
+  color: #04101d;
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.hero {
+  padding: 72px 0 40px;
+  position: relative;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(24px);
+  opacity: .45;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-1 { width: 240px; height: 240px; background: rgba(74,216,255,0.16); top: 20px; left: -60px; }
+.orb-2 { width: 280px; height: 280px; background: rgba(240,193,90,0.10); top: 80px; right: -80px; animation-delay: 1.5s; }
+.orb-3 { width: 180px; height: 180px; background: rgba(102,239,194,0.12); bottom: 20px; left: 40%; animation-delay: .8s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-18px) translateX(10px); }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.glass, .hero-card, .feature-card, .catalog-card, .pricing-card, .story-card, .faq-item, .cta-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.hero-card, .glass { position: relative; overflow: hidden; }
+.hero-card::before, .glass::before, .feature-card::before, .catalog-card::before, .pricing-card::before, .cta-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(74,216,255,0.12), transparent 24%);
+  pointer-events: none;
+}
+
+.hero-main { padding: 36px; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(74,216,255,0.12);
+  border: 1px solid rgba(74,216,255,0.26);
+  color: #8ee6ff;
+  font-size: .9rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.55rem, 5.6vw, 5.6rem);
+  line-height: .96;
+  letter-spacing: -0.06em;
+}
+
+.title-accent { color: var(--gold); }
+
+.subtitle {
+  margin: 24px 0 0;
+  font-size: 1.16rem;
+  color: var(--muted);
+  max-width: 860px;
+}
+
+.impact-quote {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(240,193,90,0.3);
+  background: rgba(240,193,90,0.06);
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.impact-quote strong { color: var(--gold); }
+
+.hero-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  margin: 24px 0 30px;
+}
+
+.point {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.point:hover { transform: translateY(-4px); border-color: rgba(74,216,255,0.24); }
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.hero-side {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.side-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  transition: transform .25s ease;
+}
+
+.side-card:hover { transform: translateY(-4px); }
+
+.side-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.side-card p { margin: 0; color: var(--muted); }
+
+.section { padding: 42px 0; position: relative; z-index: 2; }
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.section-head p {
+  margin: 0;
+  max-width: 920px;
+  font-size: 1.08rem;
+  color: var(--muted);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 18px;
+}
+
+.feature-card {
+  position: relative;
+  padding: 26px;
+  overflow: hidden;
+  transition: transform .28s ease, border-color .28s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(74,216,255,0.26);
+}
+
+.feature-index {
+  display: inline-flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(74,216,255,0.14);
+  color: #9be8ff;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.feature-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+
+.feature-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tag {
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .84rem;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.story-card {
+  padding: 28px;
+  transition: transform .25s ease;
+}
+
+.story-card:hover { transform: translateY(-5px); }
+
+.story-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.45rem;
+  color: var(--gold);
+}
+
+.story-card p { margin: 0; color: var(--muted); }
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 18px;
+}
+
+.catalog-card {
+  position: relative;
+  padding: 26px;
+  overflow: hidden;
+  transition: transform .28s ease, border-color .28s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(240,193,90,0.22);
+}
+
+.catalog-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  color: var(--text);
+}
+
+.catalog-card p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.catalog-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.catalog-card li { margin: 8px 0; }
+
+.method-banner {
+  padding: 28px;
+  border-radius: 26px;
+  border: 1px solid rgba(240,193,90,0.25);
+  background: linear-gradient(135deg, rgba(240,193,90,0.08), rgba(74,216,255,0.06));
+  margin-bottom: 20px;
+  font-size: 1.08rem;
+  color: var(--text);
+}
+
+.method-banner strong { color: var(--gold); }
+
+.pricing-wrap {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 20px;
+}
+
+.pricing-card {
+  position: relative;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.pricing-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.7rem;
+}
+
+.price-main {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 18px 0 8px;
+}
+
+.price-main .big {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: .9;
+  letter-spacing: -0.06em;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.price-main .small {
+  font-size: 1.15rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.price-note {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.price-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.price-list li { margin: 10px 0; }
+
+.faq {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-item {
+  padding: 20px 22px;
+  transition: transform .25s ease;
+}
+
+.faq-item:hover { transform: translateY(-4px); }
+
+.faq-item h4 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+}
+
+.faq-item p { margin: 0; color: var(--muted); }
+
+.cta-panel {
+  position: relative;
+  padding: 34px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-panel h2 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+}
+
+.cta-panel p {
+  margin: 0 auto 20px;
+  max-width: 840px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.ticker {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+  color: #d7e3f4;
+  font-weight: 700;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 28px;
+  min-width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.disclaimer {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+footer {
+  padding: 42px 0 60px;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+@media (max-width: 1080px) {
+  .hero-grid, .features-grid, .catalog-grid, .story-grid, .pricing-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav { flex-direction: column; align-items: flex-start; }
+  .nav-links { gap: 12px; }
+  .hero-main, .hero-side, .feature-card, .catalog-card, .pricing-card, .story-card, .cta-panel { padding: 22px; }
+  .hero-points { grid-template-columns: 1fr; }
+  h1 { font-size: 2.5rem; }
+  .price-main .big { font-size: 3.8rem; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <strong>NEXIALSTRATEGY</strong>
+        <span>Formação Interdisciplinar para Grandes Impactos</span>
+      </div>
+      <div class="nav-links">
+        <a href="#diferencial">Diferencial</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#metodo">Método</a>
+        <a href="#precos">Preços</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="https://wa.me/5591980144854" target="_blank" rel="noopener">Fale agora</a>
+      </div>
+    </div>
+  </div>  <header class="hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="container hero-grid">
+      <div class="hero-card hero-main reveal">
+        <div class="eyebrow">NEXIALSTRATEGY • DECISÃO • DINHEIRO • CARREIRA • VIDA REAL</div>
+        <h1>A maioria vive reagindo ao mundo real.<br><span class="title-accent">Aqui você aprende a ler melhor, decidir melhor e construir vantagem.</span></h1>
+        <p class="subtitle">Uma formação interdisciplinar voltada para tomada de decisões mais inteligentes no mundo real — conectando assimetria de informação, estratégia, dinheiro, carreira, saúde, relacionamentos e desenvolvimento intelectual.</p>
+        <div class="impact-quote">Decidir melhor muda tudo. <strong>Quem lê melhor o mundo real, escolhe melhor, perde menos e avança mais.</strong></div>
+        <div class="hero-points">
+          <div class="point">Método para tomada de decisões em cenários complexos, com incerteza, risco e assimetria de informação.</div>
+          <div class="point">Leitura de oportunidades reais em dinheiro, carreira, saúde, posicionamento e desenvolvimento pessoal.</div>
+          <div class="point">Formação voltada para quem quer errar menos, enxergar melhor e construir vantagem acima da média.</div>
+          <div class="point">Aplicação prática em escolhas estratégicas do mundo real, inclusive em contextos profissionais, econômicos e intelectuais.</div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn" href="https://wa.me/5591980144854" target="_blank" rel="noopener">Quero falar agora</a>
+          <a class="btn-outline" href="#catalogo">Explorar áreas</a>
+        </div>
+      </div><aside class="glass hero-side reveal">
+    <div class="side-card">
+      <h3>Leitura do mundo real</h3>
+      <p>Aprenda a interpretar cenários, incentivos, riscos, vantagens e oportunidades antes da maioria.</p>
+    </div>
+    <div class="side-card">
+      <h3>Assimetria de informação</h3>
+      <p>Entenda como informação, timing e leitura estratégica criam vantagem competitiva em decisões da vida real.</p>
+    </div>
+    <div class="side-card">
+      <h3>Vida prática</h3>
+      <p>Dinheiro, carreira, saúde, relacionamentos, reputação, posicionamento e desenvolvimento intelectual vistos sob lógica estratégica.</p>
+    </div>
+  </aside>
+</div>
+
+  </header>  <!-- NOVA VERSÃO: TRILHA ACADÊMICA / PESQUISA -->  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Uma formação também para quem quer criar novas ideias, teorias e pesquisas</h2>
+        <p>A NexialBusiness não se limita à criação de produtos e negócios. Ela também abre espaço para pesquisadores, professores e alunos que desejam desenvolver novas teorias, estruturas conceituais, linhas de pesquisa e inovações científicas.</p>
+      </div><div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-index">01</div>
+      <h3>Criação de novas ideias</h3>
+      <p>Desenvolva capacidade de gerar hipóteses, modelos conceituais e ideias originais a partir da conexão entre áreas distintas.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-index">02</div>
+      <h3>Pesquisa interdisciplinar</h3>
+      <p>Integre diferentes campos para criar abordagens científicas mais amplas, explorando lacunas que áreas isoladas não conseguem alcançar.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-index">03</div>
+      <h3>Desenvolvimento de teorias</h3>
+      <p>Estruture novas formas de pensar problemas complexos, criando bases para teorias, modelos e aplicações inovadoras.</p>
+    </div>
+  </div>
+
+  <div class="story-grid" style="margin-top:20px;">
+    <div class="story-card reveal">
+      <h3>Para pesquisadores e professores</h3>
+      <p>Amplie sua capacidade de orientar, investigar e propor novas linhas de pesquisa conectando diferentes áreas do conhecimento.</p>
+    </div>
+    <div class="story-card reveal">
+      <h3>Para alunos e curiosos avançados</h3>
+      <p>Desenvolva pensamento crítico e criativo em níveis mais altos, com potencial para gerar projetos acadêmicos, artigos e novas abordagens.</p>
+    </div>
+  </div>
+</div>
+
+  </section>  <div class="container">
+    <div class="ticker reveal">
+      <div class="ticker-track">
+        <span>Dinheiro</span>
+        <span>Carreira</span>
+        <span>Tomada de decisão</span>
+        <span>Assimetria de informação</span>
+        <span>Saúde</span>
+        <span>Relacionamentos</span>
+        <span>Posicionamento</span>
+        <span>Leitura de cenários</span>
+        <span>Desenvolvimento intelectual</span>
+        <span>Risco e oportunidade</span>
+        <span>Direito Interdisciplinar</span>
+        <span>Economia Interdisciplinar</span>
+        <span>Administração Interdisciplinar</span>
+        <span>Biotecnologia Interdisciplinar</span>
+        <span>Medicina Veterinária Interdisciplinar</span>
+        <span>Agronomia Interdisciplinar</span>
+        <span>Medicina Interdisciplinar</span>
+        <span>Engenharia Interdisciplinar</span>
+        <span>I.A Interdisciplinar</span>
+        <span>Ciência da Computação Interdisciplinar</span>
+        <span>Ciência Ambiental Interdisciplinar</span>
+      </div>
+    </div>
+  </div>  <section class="section" id="diferencial">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Uma formação para quem quer decidir melhor no mundo real</h2>
+        <p>A NexialStrategy foi desenhada para ajudar pessoas ambiciosas, inquietas e estratégicas a tomar melhores decisões no mundo real. A proposta integra leitura de cenários, assimetria de informação, vantagem competitiva, dinheiro, carreira, saúde, relacionamentos e desenvolvimento intelectual em uma única arquitetura de pensamento aplicada.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-index">01</div>
+          <h3>Leitura estratégica real</h3>
+          <p>Você aprende a analisar incentivos, riscos, distorções, contextos e oportunidades com mais clareza do que a maioria.</p>
+          <div class="tag-row">
+            <span class="tag">Medicina</span>
+            <span class="tag">Engenharia</span>
+            <span class="tag">Negócios</span>
+            <span class="tag">Estratégia</span>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-index">02</div>
+          <h3>Decisão em cenários complexos</h3>
+          <p>Um processo para decidir sob incerteza, interpretar sinais do mundo real, reduzir erros e aumentar a qualidade das escolhas.</p>
+          <div class="tag-row">
+            <span class="tag">Criatividade</span>
+            <span class="tag">Inovação</span>
+            <span class="tag">Insights</span>
+            <span class="tag">Novos mercados</span>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-index">03</div>
+          <h3>Vantagem pela informação</h3>
+          <p>O foco é entender como informação, timing, percepção e leitura estratégica mudam resultados na prática.</p>
+          <div class="tag-row">
+            <span class="tag">Projetos</span>
+            <span class="tag">Produtos</span>
+            <span class="tag">Negócios</span>
+            <span class="tag">Sociedades</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  <section class="section">
+    <div class="container story-grid">
+      <div class="story-card reveal">
+        <h3>Mais que teoria</h3>
+        <p>Você entra em uma formação voltada para vida prática. Não é apenas aprender conceitos. É desenvolver clareza, leitura estratégica e capacidade de decidir melhor em situações reais.</p>
+      </div>
+      <div class="story-card reveal">
+        <h3>Aplicação em vida real</h3>
+        <p>A lógica da NexialStrategy pode ser aplicada em dinheiro, carreira, saúde, reputação, relacionamentos, conflitos, risco, oportunidade e construção de vantagem competitiva.</p>
+      </div>
+    </div>
+  </section>  <section class="section" id="catalogo">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Escolha seu eixo de aplicação</h2>
+        <p>A formação é organizada por eixos centrais da vida real. Cada eixo ajuda a aplicar o pensamento estratégico em contextos distintos, mas todos fazem parte de uma mesma arquitetura de decisão.</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-card reveal">
+          <h3>Medicina Interdisciplinar — Strategy</h3>
+          <p><strong>Decisão, Saúde, Carreira e Vida Real</strong></p>
+          <ul>
+            <li>Decisões clínicas e pessoais sob incerteza</li>
+            <li>Leitura crítica de riscos e condutas em saúde</li>
+            <li>Carreira médica e posicionamento estratégico</li>
+            <li>Autonomia informacional em contextos de saúde</li>
+          </ul>
+        </div><div class="catalog-card reveal">
+      <h3>Engenharia Interdisciplinar — Strategy</h3>
+      <p><strong>Decisão, Sistemas, Tecnologia e Oportunidade</strong></p>
+      <ul>
+        <li>Tomada de decisão em sistemas complexos</li>
+        <li>Leitura de oportunidades tecnológicas</li>
+        <li>Escolhas de projeto, custo e desempenho</li>
+        <li>Vantagem competitiva via engenharia aplicada</li>
+      </ul>
+    </div>
+
+    <div class="catalog-card reveal">
+      <h3>I.A Interdisciplinar — Strategy</h3>
+      <p><strong>Decisão, Automação e Vantagem Competitiva</strong></p>
+      <ul>
+        <li>Uso estratégico de IA para decisão</li>
+        <li>Automação como alavanca de resultado</li>
+        <li>Leitura de cenários com apoio de dados</li>
+        <li>Ganho de vantagem via inteligência aplicada</li>
+      </ul>
+    </div>
+
+    <div class="catalog-card reveal">
+      <h3>Economia Interdisciplinar — Strategy</h3>
+      <p><strong>Dinheiro, Mercado e Leitura de Cenários</strong></p>
+      <ul>
+        <li>Decisão financeira sob risco</li>
+        <li>Leitura de mercado e timing</li>
+        <li>Assimetria de informação</li>
+        <li>Alocação de recursos e custo de oportunidade</li>
+      </ul>
+    </div>
+
+    <div class="catalog-card reveal">
+      <h3>Direito Interdisciplinar — Strategy</h3>
+      <p><strong>Decisão, Conflito, Risco e Estrutura</strong></p>
+      <ul>
+        <li>Tomada de decisão em cenários jurídicos</li>
+        <li>Gestão de risco e prevenção de conflitos</li>
+        <li>Leitura estratégica de normas e estruturas</li>
+        <li>Posicionamento em ambientes regulatórios</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  </section>  <section class="section" id="metodo">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>O Método Strategy</h2>
+        <p>A maioria das pessoas toma decisões reagindo ao que aparece. A NexialStrategy ensina a interpretar melhor o mundo real, perceber distorções, ler incentivos, reduzir erros e construir decisões de maior qualidade.</p>
+      </div>
+      <div class="method-banner reveal"><strong><strong>Não é só sobre saber mais.</strong> É sobre interpretar melhor, errar menos, escolher melhor e construir vantagem em cenários reais.</div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-index">01</div>
+          <h3>Leitura de cenários</h3>
+          <p>Você aprende a interpretar contextos, sinais, incentivos, distorções e oportunidades antes da maioria.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-index">02</div>
+          <h3>Decisão sob incerteza</h3>
+          <p>A formação organiza pensamento para decisões em ambientes de risco, ambiguidade, pressão e informação incompleta.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-index">03</div>
+          <h3>Vantagem estratégica</h3>
+          <p>O foco é ampliar a qualidade das escolhas e a capacidade de construir vantagem real em dinheiro, carreira, vida e posicionamento.</p>
+        </div>
+      </div>
+    </div>
+  </section>  <section class="section" id="precos">
+    <div class="container pricing-wrap">
+      <div class="pricing-card reveal">
+        <h3>Formação completa — NexialStrategy</h3>
+        <p class="price-note">Uma única formação. Múltiplos eixos da vida real. Um novo nível de decisão.</p>
+        <div class="price-main">
+          <div class="small">12x de</div>
+          <div class="big">R$ 597</div>
+        </div>
+        <p class="price-note">Possibilidade também de parcelamento em <strong>18x</strong>, conforme a modalidade de ingresso.</p>
+        <ul class="price-list">
+          <li>Formação interdisciplinar completa para vida real</li>
+          <li>Acesso ao núcleo estratégico da NexialStrategy</li>
+          <li>Eixos centrais de aplicação prática</li>
+          <li>Ambiente voltado a clareza estratégica e decisões melhores</li>
+          <li>Aplicação em dinheiro, carreira, saúde, relacionamentos e desenvolvimento intelectual</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn" href="https://wa.me/5591980144854" target="_blank" rel="noopener">Quero entrar agora</a>
+          <a class="btn-outline" href="https://nexialbusiness.com" target="_blank" rel="noopener">nexialbusiness.com</a>
+        </div>
+      </div>
+      <div class="pricing-card reveal">
+        <h3>Para quem é</h3>
+        <ul class="price-list">
+          <li>Pessoas que querem decidir melhor no mundo real</li>
+          <li>Profissionais que desejam reduzir erros e construir vantagem</li>
+          <li>Pessoas ambiciosas que querem interpretar melhor cenários e oportunidades</li>
+          <li>Alunos, profissionais e executivos que querem pensar com mais lucidez prática</li>
+        </ul>
+        <div class="disclaimer">A NexialBusiness é uma formação educacional interdisciplinar. Não substitui graduação, especialização, habilitação legal ou títulos formais de exercício profissional em áreas regulamentadas.</div>
+      </div>
+    </div>
+  </section>  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Perguntas frequentes</h2>
+        <p>As dúvidas mais importantes para quem quer entender o posicionamento, o método e a proposta prática da NexialStrategy.</p>
+      </div>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <h4>Preciso já ter formação avançada para entrar?</h4>
+          <p>Não. A formação foi pensada para quem deseja interpretar melhor o mundo real, tomar melhores decisões e desenvolver clareza estratégica.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h4>A formação ajuda na tomada de decisão do mundo real?</h4>
+          <p>Sim. Esse é o núcleo da proposta: melhorar a leitura de cenários, reduzir erros de julgamento e ampliar a qualidade das decisões em contextos reais.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h4>Em que áreas da vida isso pode ser aplicado?</h4>
+          <p>Em dinheiro, carreira, saúde, relacionamentos, reputação, aprendizado, risco, oportunidade e construção de vantagem competitiva.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h4>Por que a NexialStrategy é diferente de um curso comum?</h4>
+          <p>Porque não se limita a transmitir conteúdo. Ela organiza um modo de interpretar o mundo real, decidir melhor e construir vantagem com mais lucidez.</p>
+        </div>
+      </div>
+    </div>
+  </section>  <section class="section">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <h2>Seu futuro não será definido apenas pelo que você sabe.<br><span class="title-accent">Será definido pela qualidade das decisões que você toma.</span></h2>
+        <p>Se você quer uma formação estratégica voltada para dinheiro, carreira, vida real, leitura de cenários e decisões melhores, a NexialStrategy foi desenhada para você.</p>
+        <div class="cta-actions">
+          <a class="btn" href="https://wa.me/5591980144854" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a class="btn-outline" href="https://nexialbusiness.com" target="_blank" rel="noopener">Acessar nexialbusiness.com</a>
+        </div>
+      </div>
+    </div>
+  </section>  <footer>
+    <div class="container">
+      <strong>NEXIALSTRATEGY</strong><br>
+      Formação Interdisciplinar para Grandes Impactos<br><br>
+      Site: nexialbusiness.com<br>
+      WhatsApp: (91) 98014-4854
+    </div>
+  </footer>  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script></body>
+</html>
